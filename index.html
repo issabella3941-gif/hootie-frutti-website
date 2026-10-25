@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffedf4">
+  <meta name="description" content="Meet HOOTIE FRUTTI: fruity chaos, random messages, meme images, emoji reactions, and automatic Discord posts.">
+  <title>HOOTIE FRUTTI 🍓 — Fruity Chaos</title>
+  <style>
+    :root {
+      --berry: #d82e70;
+      --berry-dark: #8f1748;
+      --pink: #ffe4ef;
+      --cream: #fffaf5;
+      --ink: #301421;
+      --muted: #755361;
+      --line: rgba(143, 23, 72, .16);
+      --card: rgba(255,255,255,.78);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--ink);
+      font-family: ui-rounded, "Trebuchet MS", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(255, 178, 207, .55), transparent 28rem),
+        radial-gradient(circle at 92% 28%, rgba(255, 216, 151, .4), transparent 24rem),
+        var(--cream);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1080px, calc(100% - 36px)); margin: auto; }
+    header { padding: 22px 0; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 1000; letter-spacing: -.04em; }
+    .brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 15px; background: white; box-shadow: 0 8px 22px #8f17481a; font-size: 24px; }
+    .navlinks { display: flex; gap: 22px; align-items: center; }
+    .navlinks a { text-decoration: none; font-weight: 750; font-size: .94rem; }
+    .navlinks a:hover { color: var(--berry); }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; border: 0; border-radius: 999px; padding: 13px 20px; background: var(--berry); color: white; font-weight: 900; text-decoration: none; box-shadow: 0 9px 22px #d82e7030; transition: transform .18s, box-shadow .18s; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 13px 26px #d82e7040; }
+    .btn.secondary { color: var(--berry-dark); background: white; box-shadow: inset 0 0 0 1px var(--line); }
+    .hero { display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: 36px; padding: 70px 0 82px; }
+    .eyebrow { display: inline-block; padding: 7px 12px; border: 1px solid var(--line); background: #ffffffb8; border-radius: 999px; color: var(--berry-dark); font-size: .84rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+    h1 { margin: 18px 0 14px; max-width: 720px; font-size: clamp(3rem, 7.2vw, 5.9rem); line-height: .96; letter-spacing: -.075em; }
+    h1 span { color: var(--berry); }
+    .lead { max-width: 590px; font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--muted); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .tiny { color: var(--muted); font-size: .84rem; margin-top: 14px; }
+    .poster { position: relative; min-height: 370px; display: grid; place-items: center; }
+    .blob { width: min(360px, 90%); aspect-ratio: 1; display: grid; place-items: center; border-radius: 43% 57% 55% 45% / 49% 42% 58% 51%; background: linear-gradient(145deg, #ffc4dc, #ffebc8); box-shadow: 0 25px 65px #8f17481b; transform: rotate(-5deg); }
+    .fruit { font-size: clamp(7rem, 18vw, 11rem); filter: drop-shadow(0 12px 10px #8f17481c); transform: rotate(5deg); }
+    .float { position: absolute; display: inline-block; padding: 10px 15px; border-radius: 16px; background: white; border: 1px solid var(--line); box-shadow: 0 12px 30px #8f174814; font-weight: 900; }
+    .f1 { top: 10%; right: 0; transform: rotate(7deg); }
+    .f2 { bottom: 12%; left: 0; transform: rotate(-7deg); }
+    .f3 { bottom: 4%; right: 4%; transform: rotate(5deg); }
+    section { padding: 54px 0; }
+    .section-head { max-width: 660px; margin: 0 auto 28px; text-align: center; }
+    h2 { margin: 0 0 10px; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.08; letter-spacing: -.055em; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { padding: 24px; background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 10px 35px #8f174808; }
+    .icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 16px; background: var(--pink); font-size: 25px; margin-bottom: 14px; }
+    .card h3 { margin: 0 0 7px; font-size: 1.16rem; }
+    .card p { margin: 0; color: var(--muted); font-size: .97rem; }
+    .commands { background: #fff0f6b8; border-block: 1px solid var(--line); }
+    .command-list { max-width: 760px; margin: auto; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: white; }
+    .command { display: grid; grid-template-columns: minmax(150px, .75fr) 1.5fr; gap: 18px; padding: 17px 21px; border-bottom: 1px solid #f5e2ea; align-items: center; }
+    .command:last-child { border-bottom: 0; }
+    code { display: inline-block; background: #fff0f6; color: var(--berry-dark); border: 1px solid var(--line); border-radius: 9px; padding: 4px 9px; font-weight: 900; }
+    .command span { color: var(--muted); }
+    .setup-box { max-width: 780px; margin: auto; padding: clamp(24px, 5vw, 42px); border-radius: 30px; background: var(--ink); color: white; text-align: center; }
+    .setup-box p { color: #f3cbdc; }
+    .setup-box .btn { background: #ff8fbb; color: #451329; box-shadow: none; }
+    footer { padding: 26px 0 38px; color: var(--muted); font-size: .9rem; }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid var(--line); padding-top: 20px; }
+    .note { margin: 18px auto 0; max-width: 700px; color: var(--muted); font-size: .85rem; text-align: center; }
+    @media (max-width: 760px) {
+      .navlinks a:not(.btn) { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 45px 0 50px; gap: 12px; }
+      .poster { min-height: 300px; }
+      .blob { width: min(290px, 75%); }
+      .grid { grid-template-columns: 1fr; }
+      .command { grid-template-columns: 1fr; gap: 5px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#" style="text-decoration:none">
+        <span class="brand-mark">🍓</span><span>HOOTIE FRUTTI</span>
+      </a>
+      <div class="navlinks">
+        <a href="#features">Features</a>
+        <a href="#commands">Commands</a>
+        <a class="btn" href="#invite">Get the bot ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <div>
+        <span class="eyebrow">🍓 A little fruity. A lot chaotic.</span>
+        <h1>Make your server<br><span>less boring.</span></h1>
+        <p class="lead">Meet HOOTIE FRUTTI: a Discord bot serving random messages, meme images, unexpected emoji reactions, and automatic posts. Completely unserious. Extremely fruity.</p>
+        <div class="actions">
+          <a class="btn invite-link" href="#invite">🍓 Invite HOOTIE FRUTTI</a>
+          <a class="btn secondary" href="#commands">Explore commands ↓</a>
+        </div>
+        <p class="tiny">Built for meme lovers, chaotic chats, and servers that don't take themselves too seriously.</p>
+      </div>
+      <div class="poster" aria-label="Fruity chaos illustration">
+        <div class="blob"><div class="fruit">🍓</div></div>
+        <span class="float f1">100% FRUTTI 💅</span>
+        <span class="float f2">chaos detected 💀</span>
+        <span class="float f3">vibe check ✨</span>
+      </div>
+    </div>
+
+    <section id="features" class="wrap">
+      <div class="section-head">
+        <h2>Small bot. Big fruity energy.</h2>
+        <p>Easy commands, surprise reactions, and just enough nonsense to keep the chat moving.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="icon">💬</div>
+          <h3>Random messages</h3>
+          <p>Summon an unpredictable HOOTIE FRUTTI message whenever the conversation needs a little chaos.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🖼️</div>
+          <h3>Meme image drops</h3>
+          <p>Call for a random image from the bot's growing collection. You never know what you're getting.</p>
+        </article>
+        <article class="card">
+          <div class="icon">💅</div>
+          <h3>Emoji reactions</h3>
+          <p>Keyword-based and occasional random reactions add a little personality to the chat—without needing to summon the bot.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🔄</div>
+          <h3>Automatic posts</h3>
+          <p>Admins can choose a channel for scheduled posts, with occasional image drops mixed in.</p>
+        </article>
+        <article class="card">
+          <div class="icon">⚙️</div>
+          <h3>Simple setup</h3>
+          <p>Use one admin command to choose where automatic posts go. Run it again whenever you want to change the channel.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🍓</div>
+          <h3>Maximum unseriousness</h3>
+          <p>No complicated systems. No unnecessary drama. Just HOOTIE FRUTTI doing its fruity thing.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="commands" class="commands">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Commands, served fresh.</h2>
+          <p>Use these in a channel where HOOTIE FRUTTI can read and respond to messages.</p>
+        </div>
+        <div class="command-list">
+          <div class="command"><div><code>!hootie</code></div><span>Get a random chaotic message.</span></div>
+          <div class="command"><div><code>!hootieimage</code></div><span>Drop a random image from the collection.</span></div>
+          <div class="command"><div><code>!hootiehelp</code></div><span>Show the bot's command list.</span></div>
+          <div class="command"><div><code>!setup</code></div><span>Set the current channel for automatic posts (admin only).</span></div>
+          <div class="command"><div><code>!setup #channel</code></div><span>Choose a specific channel for automatic posts (admin only).</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="invite" class="wrap">
+      <div class="setup-box">
+        <span class="eyebrow" style="background:#4a2638;color:#ffd3e4;border-color:#77465b">YOUR SERVER IS CALLING</span>
+        <h2 style="margin-top:17px">Ready for the fruity chaos?</h2>
+        <p>Add HOOTIE FRUTTI to your server and let the memes, messages, and reactions begin.</p>
+        <a class="btn invite-link" href="#invite">🍓 Invite the bot</a>
+        <p class="note" style="color:#f3cbdc">Before publishing: replace the placeholder invite link with your bot's real Discord invite URL.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="footer-inner">
+      <span><strong>🍓 HOOTIE FRUTTI</strong> — Maximum chaos, minimum context.</span>
+      <span>Made for Discord. Powered by fruity energy.</span>
+    </div>
+  </footer>
+
+   
+<script>
+  const inviteURL = "https://discord.com/oauth2/authorize?client_id=1563907456671813642&permissions=101440&scope=bot%20applications.commands";
+
+  document.querySelectorAll(".invite-link").forEach(link => {
+    link.href = inviteURL;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+  });
+</script>
+</body>
+</html>
+
